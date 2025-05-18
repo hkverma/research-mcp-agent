@@ -1,2 +1,1 @@
-# research-mcp-agent
-An MCP agent to do research
+uv run mcp-simple-streamablehttp-stateless
