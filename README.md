@@ -1,16 +1,11 @@
-uv run websearch_agent
 
+# MCP StreamableHttp Research Agent Server Example
 
-Start like this
-npx @modelcontextprotocol/inspector
-
-# MCP Simple StreamableHttp Stateless Server Example
-
-A stateless MCP server example demonstrating the StreamableHttp transport without maintaining session state. This example is ideal for understanding how to deploy MCP servers in multi-node environments where requests can be routed to any instance.
+A MCP server example demonstrating the StreamableHttp transport to conduct a research. This example is ideal for understanding how to deploy MCP servers in multi-node environments where requests can be routed to any instance.
 
 ## Features
 
-- Uses the StreamableHTTP transport in stateless mode (mcp_session_id=None)
+- Uses the StreamableHTTP transport in stateless mode
 - Each request creates a new ephemeral connection
 - No session state maintained between requests
 - Task lifecycle scoped to individual requests
@@ -23,23 +18,24 @@ Start the server:
 
 ```bash
 # Using default port 3000
-uv run mcp-simple-streamablehttp-stateless
+uv run research_agent
 
 # Using custom port
-uv run mcp-simple-streamablehttp-stateless --port 3000
+uv run research_agent --port 3000
 
 # Custom logging level
-uv run mcp-simple-streamablehttp-stateless --log-level DEBUG
+uv run research_agent --log-level DEBUG
 
 # Enable JSON responses instead of SSE streams
 uv run mcp-simple-streamablehttp-stateless --json-response
+
 ```
 
-The server exposes a tool named "start-notification-stream" that accepts three arguments:
+The server exposes a tool  that accepts three arguments:
 
-- `interval`: Time between notifications in seconds (e.g., 1.0)
-- `count`: Number of notifications to send (e.g., 5)
-- `caller`: Identifier string for the caller
+- `prompt`: Research topic
+- `max_search`: Number of searches for each iterations (e.g. 2)
+- `iterations`: Number of iterations to reflect on (e.g. 3)
 
 
 ## Client
