@@ -25,19 +25,20 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 @click.option("--port", default=3000, help="Port to listen on for HTTP")
 @click.option("--log-level", default="INFO", help="Logging level")
 @click.option("--json-response", is_flag=True, default=False, help="Enable JSON responses")
+
 def main(port: int, log_level: str, json_response: bool) -> int:
     logging.basicConfig(
         level=getattr(logging, log_level.upper()),
         format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     )
 
-    app = Server("mcp-deep-research-agent")
+    app = Server("mcp-research-agent")
 
     @app.call_tool()
     async def call_tool(name: str, arguments: dict) -> list[types.TextContent]:
         ctx = app.request_context
 
-        if name != "deep-research-agent":
+        if name != "research-agent":
             raise ValueError(f"Unknown tool: {name}")
 
         initial_prompt = arguments.get("prompt")
