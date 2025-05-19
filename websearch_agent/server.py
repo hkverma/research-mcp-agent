@@ -6,15 +6,15 @@ import anyio
 import click
 from duckduckgo_search import DDGS
 
-import mcp.types as types
-from mcp.server.lowlevel import Server
-from mcp.server.streamable_http_manager import StreamableHTTPSessionManager
 from starlette.applications import Starlette
 from starlette.routing import Mount
 from starlette.types import Receive, Scope, Send
 
-logger = logging.getLogger(__name__)
+import mcp.types as types
+from mcp.server.lowlevel import Server
+from mcp.server.streamable_http_manager import StreamableHTTPSessionManager
 
+logger = logging.getLogger(__name__)
 
 @click.command()
 @click.option("--port", default=3000, help="Port to listen on for HTTP")
