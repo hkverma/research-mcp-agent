@@ -1,11 +1,12 @@
-
+"""
+Research agent with web search and summary generation.
+"""
 import json
 import os
 import contextlib
 import logging
 from collections.abc import AsyncIterator
 
-import openai
 from openai import OpenAI
 
 import click
